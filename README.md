@@ -1,3 +1,3 @@
 # news-explorer-api
 
-link to the server --> https://api.roy.news.students.nomoreparties.sbs
+link to the server --> https://roy.news.students.nomoreparties.sbs
