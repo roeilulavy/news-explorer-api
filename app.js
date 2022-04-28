@@ -9,13 +9,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 
-const { NODE_ENV, PORT, ADDRESS } = process.env;
+const { NODE_ENV, PORT, DB_ADDRESS = 'mongodb://localhost:27017/newsdb' } = process.env;
 const { handleErrors } = require('./middleware/handleErrors');
 const { mainRouter } = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const { limiter } = require('./helpers/limiter');
 
-mongoose.connect(ADDRESS);
+mongoose.connect(DB_ADDRESS);
 
 app.use(limiter);
 app.use(helmet());
