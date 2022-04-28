@@ -1,7 +1,7 @@
 const express = require('express');
+require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -9,12 +9,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 
+const { NODE_ENV, PORT, ADDRESS } = process.env;
 const { handleErrors } = require('./middleware/handleErrors');
 const { mainRouter } = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const { limiter } = require('./helpers/limiter');
 
-mongoose.connect('mongodb://localhost:27017/newsdb');
+mongoose.connect(ADDRESS);
 
 app.use(limiter);
 app.use(helmet());
@@ -35,11 +36,10 @@ app.use(errors());
 
 app.use(handleErrors);
 
-mongoose.connection.once('error', () => {
-  console.error.bind(console, 'MongoDB Connection Error: ');// eslint-disable-line no-console
-});
-
-mongoose.connection.once('open', () => {
-  console.log('Connected to MongoDB');// eslint-disable-line no-console
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));// eslint-disable-line no-console
-});
+if (NODE_ENV !== 'production') {
+  app.listen(PORT);
+} else {
+  app.listen(3000, () => {
+    console.log('MODE Production => Server is running on port 3000');// eslint-disable-line no-console
+  });
+}
