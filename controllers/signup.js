@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const { ConflictError, BadRequestError } = require('../utils/errorHandler');
 
-const { SALT_ROUNDS } = process.env;
+const { SALT_ROUNDS = 10 } = process.env;
 
 const signUp = async (req, res, next) => {
   try {
