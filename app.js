@@ -9,7 +9,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 
-const { NODE_ENV, PORT, DB_ADDRESS = 'mongodb://localhost:27017/newsdb' } = process.env;
+const { NODE_ENV, PORT = 3000, DB_ADDRESS = 'mongodb://localhost:27017/newsdb' } = process.env;
 const { handleErrors } = require('./middleware/handleErrors');
 const { mainRouter } = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middleware/logger');
