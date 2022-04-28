@@ -1,0 +1,47 @@
+{
+  "name": "news-explorer-api",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Roei Lulavy",
+  "license": "ISC",
+  "main": "index.js",
+  "homepage": "https://api.roy.news.students.nomoreparties.sbs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roeilulavy/news-explorer-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/roeilulavy/news-explorer-api/issues"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest",
+    "lint": "npx eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "celebrate": "^15.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "express": "^4.17.3",
+    "express-rate-limit": "^6.3.0",
+    "express-winston": "^4.2.0",
+    "helmet": "^5.0.2",
+    "https": "^1.0.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.0",
+    "save": "^2.4.0",
+    "validator": "^13.7.0",
+    "winston": "^3.7.2"
+  }
+}
