@@ -2,11 +2,10 @@ const express = require('express');
 require('dotenv').config();
 
 const app = express();
-
-const mongoose = require('mongoose');
 const helmet = require('helmet');
-const cors = require('cors');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 
 const { NODE_ENV, PORT = 3000, DB_ADDRESS = 'mongodb://localhost:27017/newsdb' } = process.env;
@@ -37,9 +36,7 @@ app.use(errors());
 app.use(handleErrors);
 
 if (NODE_ENV !== 'production') {
-  app.listen(PORT);
-} else {
-  app.listen(3000, () => {
-    console.log('MODE Production => Server is running on port 3000');// eslint-disable-line no-console
+  app.listen(PORT, () => {
+    console.log(`App running on port ${PORT}`);// eslint-disable-line no-console
   });
 }
