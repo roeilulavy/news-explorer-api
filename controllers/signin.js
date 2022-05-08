@@ -17,7 +17,7 @@ const signIn = async (req, res, next) => {
     if (user) {
       const token = await getToken(user._id);
 
-      res.status(200).send(token);
+      res.status(200).send({ token });
     } else {
       next(new AuthorizationError('Invalid Email or Password'));
       return;
